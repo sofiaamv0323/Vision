@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "TcHmi.Controls.Beckhoff.Vision.TcHmiVnPolygon": {
+      "type": "object",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkControlType": "TcHmiVnPolygon",
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff.Vision"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcHmiVnPolygon.PolygonData": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "TcHmiVnPolygon.PolygonData",
+      "type": "array",
+      "items": {
+        "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Vector2"
+      },
+      "default": [],
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcHmiVnPolygon.PolygonData"
+    }
+  }
+}

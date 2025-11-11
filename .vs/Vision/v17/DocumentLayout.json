@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Vision_6Octubre\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D9F4841-A423-46FE-8EF1-15DA8E93327C}|..\\Final\\Vision_4026_Final\\HMI\\HMI.hmiproj|C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Properties\\tchmipublish.config.json||{98BA924B-FDDE-443F-9DC0-5E748A994C0E}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D9F4841-A423-46FE-8EF1-15DA8E93327C}|..\\Final\\Vision_4026_Final\\HMI\\HMI.hmiproj|C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\Documentacion.content||{5D9FBDFB-BFD6-4B5F-871D-4B35C4B2E6E2}|Html"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{563F8EAB-42A3-4152-8D1E-D2EC15BA5DC0}|PLC\\PLC.plcproj|C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Vision_6Octubre\\PLC\\POUs\\MAIN.TcPOU||{CFF47BB1-5559-4BDE-A2AF-06B30BC64F6C}",
+      "RelativeMoniker": "D:0:0:{563F8EAB-42A3-4152-8D1E-D2EC15BA5DC0}|PLC\\PLC.plcproj|solutionrelative:PLC\\POUs\\MAIN.TcPOU||{CFF47BB1-5559-4BDE-A2AF-06B30BC64F6C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D9F4841-A423-46FE-8EF1-15DA8E93327C}|..\\Final\\Vision_4026_Final\\HMI\\HMI.hmiproj|C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\ImageWatch.content||{5D9FBDFB-BFD6-4B5F-871D-4B35C4B2E6E2}|Html"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D9F4841-A423-46FE-8EF1-15DA8E93327C}|..\\Final\\Vision_4026_Final\\HMI\\HMI.hmiproj|C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Desktop.view||{5D9FBDFB-BFD6-4B5F-871D-4B35C4B2E6E2}|Html"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d1314bba-079e-4329-be7c-091999a84ee8}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Documentacion.content",
+              "DocumentMoniker": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\Documentacion.content",
+              "RelativeDocumentMoniker": "..\\Final\\Vision_4026_Final\\HMI\\Contents\\Documentacion.content",
+              "ToolTip": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\Documentacion.content",
+              "RelativeToolTip": "..\\Final\\Vision_4026_Final\\HMI\\Contents\\Documentacion.content",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-09T10:30:29.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MAIN",
+              "DocumentMoniker": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Vision_6Octubre\\PLC\\POUs\\MAIN.TcPOU",
+              "RelativeDocumentMoniker": "PLC\\POUs\\MAIN.TcPOU",
+              "ToolTip": "MAIN [Vision.PLC]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-07T08:00:44.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{94c070b9-db0b-4415-9311-bac4eef266f5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImageWatch.content",
+              "DocumentMoniker": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\ImageWatch.content",
+              "RelativeDocumentMoniker": "..\\Final\\Vision_4026_Final\\HMI\\Contents\\ImageWatch.content",
+              "ToolTip": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Contents\\ImageWatch.content",
+              "RelativeToolTip": "..\\Final\\Vision_4026_Final\\HMI\\Contents\\ImageWatch.content",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-07T10:21:09.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tchmipublish.config.json[HMI]",
+              "DocumentMoniker": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Properties\\tchmipublish.config.json",
+              "RelativeDocumentMoniker": "..\\Final\\Vision_4026_Final\\HMI\\Properties\\tchmipublish.config.json",
+              "ToolTip": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Properties\\tchmipublish.config.json[HMI]",
+              "RelativeToolTip": "..\\Final\\Vision_4026_Final\\HMI\\Properties\\tchmipublish.config.json[HMI]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-06T15:22:44.672Z",
+              "EditorCaption": "[HMI]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Desktop.view",
+              "DocumentMoniker": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Desktop.view",
+              "RelativeDocumentMoniker": "..\\Final\\Vision_4026_Final\\HMI\\Desktop.view",
+              "ToolTip": "C:\\Users\\sofiaM.BECKHOFF\\Documents\\Clientes\\Otros\\UAX\\Final\\Vision_4026_Final\\HMI\\Desktop.view",
+              "RelativeToolTip": "..\\Final\\Vision_4026_Final\\HMI\\Desktop.view",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-06T15:22:28.489Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

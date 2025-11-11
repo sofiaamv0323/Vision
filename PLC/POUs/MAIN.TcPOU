@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{00718714-8e81-478b-b1e4-ceb7e1e52c7a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	// Variable para activar o desactivar el filtrado de los contornos
+	bMostrarContornosFiltrados: 			BOOL;
+	// Threshold para pasar la imagen de grises a blanco y negro
+	fThresholdParaBN : 						LREAL := 70;
+	// Intervalo del area maximo y minimo para el filtrado
+	fAreaMinima:							LREAL:=100;
+	fAreaMaxima:							LREAL:=1000000;
+	// Circularidad minima para el filtrado
+	fCircularidadMinima:					LREAL := 0.1;
+	
+	// Variable donde guardar los resultados de todos los FBs y Fs que trabajan con la imagen
+	hr:										HRESULT;
+	// FB para controlar la el FileSource (tambien serviria para la camara sin modificar codigo)
+    fbCamera:								FB_VN_SimpleCameraControl;
+	// Estado que indica la adquisicion de la imagen
+    eEstadoAdquisicion:						ETcVnCameraState;
+	// Imagen de entrada en grises (si no esta en grises se convertira)
+    ipImagenEntradaEnGrises:				ITcVnImage;
+	// Imagen en RGB (para mostrar resultados)
+	ipImagenEntradaEnRgb:					ITcVnImage;
+	// Imagen en blanco y negro a partir de la de grises
+	ipImagenEntradaEnBn:					ITcVnImage;
+	// Imagen capturada en grises mostrable
+    ipDispImagenEntradaEnGrises:			ITcVnDisplayableImage;
+	// Imagen capturada en RGB mostrable
+	ipDispImagenEntradaEnRgb:				ITcVnDisplayableImage;
+	// Imagen capturada en blanco y negro mostrable
+    ipDispImagenEntradaEnBn:				ITcVnDisplayableImage;
+	// Contenedores con los contornos encontrados y filtrados	
+	ipListaDeContornosEncontrados :			ITcVnContainer;
+	ipListaDeContornosFiltrados :			ITcVnContainer;
+	// Variables para recorrer los listados de contenedores anteriores
+	ipContornoActual:						ITcVnContainer;
+	ipIteradorContornos:					ITcVnForwardIterator;
+	// Offset de la posicion del contorno actual
+	aOffsetPosicionContornos:				TcVnPoint;
+	// Area del contorno actual
+	fAreaContorno:							LREAL;
+	// Circularidad del contorno actual
+	fCircularidad:							LREAL;	
+	// Color para marcar los contornos
+	aColorMarcarContornos: 					TcVnVector4_LREAL:= [255, 0, 0];
+
+	// Variable con la informacion del rectangulo que encapsula el contorno actual
+	stRectangulo : 							TcVnRotatedRectangle;
+	stext : 								STRING;
+ 	stext2 : 								STRING;
+	bGetData:								BOOL;
+	fbFormatString: 						FB_FormatString;
+	
+	fbRed:									FB_Red;
+	bExecuteRed:							BOOL;
+	RedValue:								UDINT:=0;
+	fbBlue:									FB_Blue;
+	bExecuteBlue:							BOOL;
+	BlueValue:								UDINT:=0;
+	fbBrightness:							FB_Brightness;
+	bExecuteBright:							BOOL;
+	BrightnessValue:						UDINT:=0;
+	fbGreen:								FB_Green;
+	bExecuteGreen:							BOOL;
+	GreenValue:								UDINT:=0;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[eEstadoAdquisicion := fbCamera.GetState();
+
+// Maquina de estados en funcion del estado de adquisicion de la imagen
+CASE eEstadoAdquisicion OF
+	
+	// Si no se ha dado la orden de adquirir una imagen se lanza
+	TCVN_CS_INITIAL, TCVN_CS_INITIALIZING, TCVN_CS_INITIALIZED, TCVN_CS_OPENING, TCVN_CS_OPENED, TCVN_CS_STARTACQUISITION:
+			hr := fbCamera.StartAcquisition();	
+	
+	// Si la adquisicion esta en error intenta resetear
+	TCVN_CS_ERROR: 
+			hr := fbCamera.Reset();
+		
+	// Si se ha adquirido una imagen se procesa
+	TCVN_CS_ACQUIRING: 
+		// Se obtiene la imagen en una variable local
+			hr := fbCamera.GetCurrentImage(ipImagenEntradaEnGrises);
+			
+		// Se comprueba que la carga de la imagen haya sido correcto
+		IF SUCCEEDED(hr) AND ipImagenEntradaEnGrises <> 0 THEN
+			
+		//Convierto la imagen de entrada de Bayer a RGB
+			hr := F_VN_ConvertColorSpace(ipImagenEntradaEnGrises, ipImagenEntradaEnRgb, TCVN_CST_BAYER_RG_TO_RGB, hr);
+		
+		// Aplica el threshold para convertir la imagen en blanco y negro
+			hr := F_VN_Threshold(ipImagenEntradaEnGrises, ipImagenEntradaEnBn, fThresholdParaBN, 255, TCVN_TT_Binary, hr);
+		
+		// Busca los contornos en la imagen en blanco y negro
+			hr := F_VN_FindContoursExp(ipSrcImage := ipImagenEntradaEnBn, ipContours := ipListaDeContornosEncontrados, eRetrievalMode := ETcvnContourRetrievalmode.TCVN_CRM_LIST, 
+										eApproximationMethod := ETcvnContourApproximationMethod.TCVN_CAM_SIMPLE, aOffset := aOffsetPosicionContornos, hrPrev := hr);
+					
+			// Recorre los contornos encontrados con el iterador
+			hr := F_VN_GetForwardIterator(ipListaDeContornosEncontrados, ipIteradorContornos, hr);		
+			
+			// Crea un listado de contornos donde guardara los resultados filtrados
+			hr := F_VN_CreateContainer(ipListaDeContornosFiltrados, ContainerType_Vector_Vector_TcVnPoint2_DINT, 0, hr);
+			
+			// Recorre el listado de contornos encontrados
+			WHILE SUCCEEDED(hr) AND_THEN ipIteradorContornos.CheckIfEnd() <> S_OK DO
+				// Obtiene el sigueiente contorno
+				hr := F_VN_GetContainer(ipIteradorContornos, ipContornoActual, hr);
+			
+				// Obtener el area del contorno actual
+				hr := F_VN_ContourArea(ipContornoActual, fAreaContorno, hr);
+
+				// Filtrar por area
+				IF fAreaContorno > fAreaMinima AND fAreaContorno < fAreaMaxima THEN
+					// Obtener circularidad del contorno
+					hr := F_VN_ContourCircularity(ipContornoActual, fCircularidad, hr);
+					// Filtrar por circularidad
+					IF fCircularidad > fCircularidadMinima THEN
+						// Si ha pasado todos los filtros se añade el contorno actual al listado de contornos filtrados
+						hr := F_VN_AppendToContainer_ITcVnContainer(ipContornoActual, ipListaDeContornosFiltrados, hr);
+						hr := F_VN_EnclosingRectangle(ipContornoActual, stRectangulo, hr);
+						IF bGetData THEN 
+						// Escribe el texto con la informacion del contorno en su interior
+						// Primero la informacion de las coordenadas
+							fbFormatString(sFormat:= 'Posicion X: %.2f - Posicion Y: %.2f', arg1:= F_REAL(stRectangulo.aCenter[0]), arg2:= F_REAL(stRectangulo.aCenter[1]), sOut=> stext);
+							hr := F_VN_PutText(stext, ipImagenEntradaEnRgb, TO_UDINT(stRectangulo.aCenter[0]-60), TO_UDINT(stRectangulo.aCenter[1])-30, TCVN_FT_HERSHEY_DUPLEX, 1, aColorMarcarContornos, hr);
+						// Despues la informacion de la anchura y la altura
+						fbFormatString(sFormat:= 'Anchura: %.2f - Altura: %.2f', arg1:= F_REAL(stRectangulo.stSize.fWidth), arg2:= F_REAL(stRectangulo.stSize.fHeight), sOut=> stext2);
+						hr := F_VN_PutText(stext2, ipImagenEntradaEnRgb, TO_UDINT(stRectangulo.aCenter[0]-60), TO_UDINT(stRectangulo.aCenter[1]), TCVN_FT_HERSHEY_DUPLEX, 1, aColorMarcarContornos, hr);	
+						END_IF
+					END_IF
+				END_IF	
+
+				// Actualizar la posicion del iterador al sigueinte
+				hr := F_VN_IncrementIterator(ipIteradorContornos, hr);
+			END_WHILE
+			
+			// Pinta los contornos encontrados segun si se quiere mostrar todos o los filtrados
+			IF bMostrarContornosFiltrados THEN
+				hr := F_VN_DrawContours(ipListaDeContornosFiltrados, -1, ipImagenEntradaEnRgb, aColorMarcarContornos, 3, hr);				
+			END_IF	
+			
+			// Copiar la imagen en imagenes mostrables (la original, la de blanco y negro y la que muestra resultados marcados)
+			hr := F_VN_CopyIntoDisplayableImage(ipImagenEntradaEnGrises, ipDispImagenEntradaEnGrises, hr);
+			hr := F_VN_CopyIntoDisplayableImage(ipImagenEntradaEnRgb, ipDispImagenEntradaEnRgb, hr);
+			hr := F_VN_CopyIntoDisplayableImage(ipImagenEntradaEnBn, ipDispImagenEntradaEnBn, hr); 
+		END_IF
+END_CASE
+
+//Gestión de RGBA
+fbRed(bWriteRED:= bExecuteRed, fRedWritten:= RedValue);
+fbBlue(bWriteBlue:= bExecuteBlue, fBlueWritten:= BlueValue);
+fbBrightness(bWriteBrightness:= bExecuteBright, fBrightnessWritten:= BrightnessValue);
+fbGreen(bWriteGreen:= bExecuteGreen, fGreenWritten:= GreenValue);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

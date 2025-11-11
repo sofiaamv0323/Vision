@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "TcHmi.Controls.Beckhoff.Vision.TcVnDisplayableImage": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnDisplayableImage",
+      "$ref": "tchmi:general#/definitions/BINARY",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnDisplayableImage"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Vector2": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Vector2",
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Vector2"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Vector3": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Vector3",
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minLength": 3,
+      "maxLength": 3,
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Vector3"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Vector4": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Vector4",
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minLength": 4,
+      "maxLength": 4,
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Vector4"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Orientation": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Orientation",
+      "type": "string",
+      "enum": [
+        "Horizontal",
+        "Vertical"
+      ],
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Orientation"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.DataUpdate": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.DataUpdate",
+      "type": "string",
+      "enum": [
+        "onChanged",
+        "onConfirmed"
+      ],
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.DataUpdate"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.ShapeType": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.ShapeType",
+      "type": "string",
+      "enum": [
+        "Point",
+        "Line",
+        "Square",
+        "Rectangle",
+        "Circle",
+        "Ellipse",
+        "Polygon"
+      ],
+      "default": "Rectangle",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.ShapeType"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Color.Space": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Color.Space",
+      "type": "string",
+      "enum": [
+        "Gray",
+        "RGB",
+        "RGBa",
+        "HSV",
+        "HSV FULL",
+        "HLS",
+        "HLS FULL",
+        "Lab",
+        "YUV",
+        "YCrCb"
+      ],
+      "default": "RGB",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Color.Space"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Color.ElementType": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Color.ElementType",
+      "type": "string",
+      "enum": [
+        "8-Bit (USINT)",
+        "16-Bit (UINT)"
+      ],
+      "default": "USINT",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Color.ElementType"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.Color.Precision": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.Color.Precision",
+      "type": "string",
+      "enum": [
+        "0 Decimals",
+        "1 Decimal",
+        "2 Decimals",
+        "3 Decimals",
+        "Unrounded"
+      ],
+      "default": 2,
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.Color.Precision"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnVector3_REAL": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnVector3_REAL",
+      "items": {
+        "$ref": "tchmi:general#/definitions/REAL"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnVector3_REAL"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnVector4_LREAL": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnVector4_LREAL",
+      "items": {
+        "$ref": "tchmi:general#/definitions/LREAL"
+      },
+      "maxItems": 4,
+      "minItems": 4,
+      "type": "array",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnVector4_LREAL"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnVector2_REAL": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnVector2_REAL",
+      "items": {
+        "$ref": "tchmi:general#/definitions/REAL"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnVector2_REAL"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnPoint2_REAL": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnPoint2_REAL",
+      "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnVector2_REAL",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnPoint2_REAL"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnSize2_REAL": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnSize2_REAL",
+      "properties": {
+        "fHeight": {
+          "$ref": "tchmi:general#/definitions/REAL"
+        },
+        "fWidth": {
+          "$ref": "tchmi:general#/definitions/REAL"
+        }
+      },
+      "type": "object",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnSize2_REAL"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnRotatedRectangle": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnRotatedRectangle",
+      "properties": {
+        "aCenter": {
+          "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnPoint2_REAL"
+        },
+        "fAngle": {
+          "$ref": "tchmi:general#/definitions/REAL"
+        },
+        "stSize": {
+          "$ref": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnSize2_REAL"
+        }
+      },
+      "type": "object",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnRotatedRectangle"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcVnRectangle": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.TcVnRectangle",
+      "properties": {
+        "nHeight": {
+          "$ref": "tchmi:general#/definitions/DINT"
+        },
+        "nWidth": {
+          "$ref": "tchmi:general#/definitions/DINT"
+        },
+        "nX": {
+          "$ref": "tchmi:general#/definitions/DINT"
+        },
+        "nY": {
+          "$ref": "tchmi:general#/definitions/DINT"
+        }
+      },
+      "type": "object",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcVnRectangle"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.NumberArray": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.NumberArray",
+      "items": {
+        "type": "number"
+      },
+      "type": "array",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.NumberArray"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.PercentUnit": {
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "title": "Vision.PercentUnit",
+      "enum": [
+        "%"
+      ],
+      "type": "string",
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.PercentUnit"
+    }
+  }
+}

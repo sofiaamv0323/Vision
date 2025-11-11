@@ -1,0 +1,113 @@
+{
+  "$schema": "../../TcHmiSrv/schema/ExtensionSettings.Schema.json",
+  "version": "14.3.185.0",
+  "configVersion": "1.0.1.2",
+  "guid": "3fb9ee51-4588-4f96-8824-2d847d442ae0",
+  "visibility": "AlwaysShow",
+  "policies": [
+    "StrictPropertyValidation",
+    "StrictConfigListenerFilter"
+  ],
+  "symbols": {
+    "ResetStatistics": {
+      "readValue": {
+        "function": true
+      }
+    },
+    "ListSymbols": {
+      "readValue": {
+        "function": true
+      }
+    },
+    "GetSchema": {
+      "writeValue": {
+        "type": "string"
+      },
+      "readValue": {
+        "function": true
+      }
+    },
+    "Diagnostics": {
+      "readValue": {
+        "function": true,
+        "type": "object",
+        "transient": true,
+        "properties": {
+          "Runtimes": {
+            "propertyOrder": 1,
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "CONNECTION_STATE": {
+                  "propertyOrder": 1,
+                  "type": "string"
+                },
+                "SYSTEM_SERVICE_ADS_STATE": {
+                  "propertyOrder": 2,
+                  "type": "string"
+                },
+                "ADS_STATE": {
+                  "propertyOrder": 3,
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Statistics": {
+            "propertyOrder": 2,
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "IMAGE_RESOLUTION": {
+                  "propertyOrder": 1,
+                  "type": "string"
+                },
+                "IMAGE_SIZE_IN_PLC": {
+                  "propertyOrder": 2,
+                  "type": "string"
+                },
+                "AVERAGE_IMAGE_SIZE_IN_SERVER": {
+                  "propertyOrder": 3,
+                  "type": "string"
+                },
+                "FPS": {
+                  "propertyOrder": 4,
+                  "type": "string"
+                },
+                "AVERAGE_ADS_TRANSMISSION_TIME": {
+                  "propertyOrder": 5,
+                  "type": "string"
+                },
+                "AVERAGE_IMAGE_CONVERSION_TIME": {
+                  "propertyOrder": 6,
+                  "type": "string"
+                },
+                "AVERAGE_EXTENSION_PROCESSING_TIME": {
+                  "propertyOrder": 7,
+                  "type": "string"
+                },
+                "AVERAGE_SERVER_PROCESSING_TIME": {
+                  "propertyOrder": 8,
+                  "type": "string"
+                },
+                "TRANSMITTED_IMAGES": {
+                  "propertyOrder": 9,
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "dotNetTargetFrameworkVersion": "v6.0",
+  "dotNetTargetFramework": "net8.0",
+  "dotNetPlatformTarget": "AnyCPU",
+  "dotNetConfiguration": "Release",
+  "packageVersion": "13.7.6856",
+  "productVersion": "14.3.185.0",
+  "signature": "gQDOgt4Aztd5Xjskm6JNHsk2NaNm+shiDlVIS8dSD1eeiMNkb5GOUGfOlSlFW2NLXdOduTsm68Tf47HgyngvHWsQDs/b5djP05EuLez+heVXvgYiYWcFqb3SF6sP0oLDpsoO+aYrKeZrmaRVVsg7RRNGi3OqrD31B5XaGz9+Jjf564rsFRJ0AeM02hHJjGmyIWMbyGKf9DGVujJ95AJ+ixhNkOfZvMqzroVqcAjV7FeQYP1iqVYBlCk8GYd9VIHq/XkLTMYY5SV6+xiIOrQLtFr7U3s78gG/4MX0q3cj0lYoA9Z5PaI1CrIZ2sQCOAxZ66t+kYOcYCUTTx/Dm+k5vg=="
+}

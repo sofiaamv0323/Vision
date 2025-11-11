@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Blue" Id="{3ad72d1a-3365-4e0e-b51e-dab9d8354a90}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Blue
+VAR_INPUT
+	bWriteBlue:								BOOL;
+	fBlueWritten:							UDINT;
+END_VAR
+VAR_OUTPUT
+	bBusyWriteBlue:							BOOL;
+	bErrorWriteBlue:						BOOL;
+END_VAR
+VAR
+		//Cambio de canal azul [0..4095]
+	Addr_Blue:								GVCP_REGISTER_ADDRESS:= 16#3300012C;
+	fbBlueRegisterWrite:					FB_VN_WriteRegister_UDINT;
+	fbBlueRegisterRead:						FB_VN_ReadRegister_UDINT;; 
+	bReadBlue:								BOOL;
+	fBlueRead:								UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbBlueRegisterWrite(nAddress:=Addr_Blue, nValue:= fBlueWritten, bWrite:= bWriteBlue,bBusy=> bBusyWriteBlue, bError=> bErrorWriteBlue);
+fbBlueRegisterRead(nAddress:=Addr_Blue, bRead:=bReadBlue, nValue=> fBlueRead);
+IF fBlueWritten > 4095 THEN
+	fBlueWritten:=4095;
+ELSIF fBlueWritten <=0 THEN
+	fBlueWritten:=0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

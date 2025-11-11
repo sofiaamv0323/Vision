@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Green" Id="{4a13138b-5b12-4110-8893-2f30688991b8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Green
+VAR_INPUT
+	bWriteGreen:							BOOL;
+	fGreenWritten:							UDINT;
+END_VAR
+VAR_OUTPUT
+	bBusyWriteGreen:						BOOL;
+	bErrorWriteGreen:						BOOL;
+END_VAR
+VAR
+	//Cambio de canal verde[0..4095]
+	Addr_Green:								GVCP_REGISTER_ADDRESS:= 16#33000124;
+	fbGreenRegisterWrite:					FB_VN_WriteRegister_UDINT;
+	fbGreenRegisterRead:					FB_VN_ReadRegister_UDINT;
+	bReadGreen:								BOOL;
+	fGreenRead:								UDINT;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbGreenRegisterWrite(nAddress:=Addr_Green, nValue:= fGreenWritten, bWrite:= bWriteGreen,bBusy=> bBusyWriteGreen, bError=> bErrorWriteGreen);
+fbGreenRegisterRead(nAddress:=Addr_Green, bRead:=bReadGreen, nValue=> fGreenRead);
+IF fGreenWritten > 4095 THEN
+	fGreenWritten:=4095;
+ELSIF fGreenWritten <=0 THEN
+	fGreenWritten:=0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

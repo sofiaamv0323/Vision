@@ -1,0 +1,64 @@
+{
+  "locale": "en",
+  "localizedText": {
+    "RUNTIMES": "Runtimes",
+    "TIMEOUT": "Timeout",
+    "ENABLED": "Enabled",
+    "PORT": "Port",
+    "DESC_RUNTIME": "Runtime",
+    "DESC_RUNTIME_STREAMPORT": "Desired port for streaming images. -1 = auto",
+    "STREAM_SERVER_PORT": "Streaming server port",
+    "AMS_NET_ID": "AmsNetId",
+    "IMAGE_SERVER_PORT": "Image server port",
+    "USE_WHITELISTING": "Use whitelisting",
+    "AVERAGING_INTERVAL": "Number of image transmissions for statistics",
+    "DESC_AVERAGING_INTERVAL": "0 = deactivated",
+
+    "INIT": "Initializing {0} extension",
+    "INIT_ERROR": "Initialization error: {0}",
+    "SHUTDOWN_ERROR": "Shutdown error: {0}",
+    "SHUTDOWN_SUCCESS": "Shutdown of {0} extension succeeded.",
+
+    "READ_CONFIG": "Reading configuration",
+    "NEW_CONFIG": "New runtime configuration: '{0}'",
+    "EDIT_CONFIG": "Runtime configuration changed: '{0}', Old: {{1}}, New: {{2}}",
+    "REMOVE_CONFIG": "Runtime configuration removed: '{0}'",
+    "CONFIG_ERROR": "Error reading configuration: {0}",
+
+    "CONNECTION_STATE": "Connection state",
+    "SYSTEM_SERVICE_ADS_STATE": "System service ADS state",
+    "ADS_STATE": "ADS state",
+
+    "IMAGE_RESOLUTION": "Image resolution",
+    "IMAGE_SIZE_IN_PLC": "Received image size",
+    "AVERAGE_IMAGE_SIZE_IN_SERVER": "Converted image size",
+    "FPS": "Framerate",
+    "ADS_DATA_RATE": "ADS data rate",
+    "AVERAGE_ADS_TRANSMISSION_TIME": "ADS transmission time",
+    "AVERAGE_IMAGE_CONVERSION_TIME": "Image conversion time",
+    "AVERAGE_EXTENSION_PROCESSING_TIME": "Processing time",
+    "AVERAGE_SERVER_PROCESSING_TIME": "Time between image requests",
+    "TRANSMITTED_IMAGES": "Evaluated image transmissions",
+
+    "CREATE_ADS_RECEIVER": "New ADS client created for symbol: '{0}'",
+
+    "READ_SYMBOL_NO_DATA": "No data returned when reading symbol: '{0}'",
+    "RUNTIME_NOT_FOUND": "Runtime does not exist: '{0}'",
+    "ADS_CONNECTION_ERROR": "ADS connection error. Runtime: '{0}', Message: '{1}', Duration: '{2}'ms",
+    "SYMBOL_NOT_FOUND": "Unknown symbol: {0}",
+    "READ_SYMBOL_ERROR": "Error reading symbol: '{0}', Message: '{1}'",
+    "READ_SYMBOL_ADS_ERROR": "ADS error reading symbol: '{0}', Message: '{1}', Duration: '{2}'ms",
+    "INCOMPATIBLE_DATA": "Incompatible image type: {0}",
+    "READ_SYMBOL_STREAM_ERROR": "Error reading stream symbol: '{0}', Message: '{1}'",
+    "READ_SYMBOL_HTTP_LISTENER_ERROR": "HttpListener error reading stream symbol: '{0}', Message: '{1}'",
+
+    "PARSE_SYMBOLS_TIME": "Parsing symbols took {0} ms",
+    "PARSE_SYMBOLS_ERROR": "Parsing symbols failed, Message: '{0}'",
+    "FIND_SYMBOLS_TIME": "Search for symbols took {0} ms",
+    "FIND_SYMBOLS_ERROR": "Search for symbols failed. Message: '{0}'",
+
+    "RESET_STATISTICS": "Statistics have been reset",
+
+    "STACK_TRACE": "Stack trace: {0}"
+  }
+}

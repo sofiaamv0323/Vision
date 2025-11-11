@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "RUNTIMES": {
+      "type": "object",
+      "propertyOrder": 1,
+      "additionalProperties": {
+        "type": "object",
+        "configDescription": "DESC_RUNTIME",
+        "properties": {
+          "ENABLED": {
+            "type": "boolean",
+            "default": true,
+            "propertyOrder": 1
+          },
+          "AMS_NET_ID": {
+            "type": "string",
+            "format": "amsnetid",
+            "optionMethod": {
+              "symbol": "ADS.ListRoutes"
+            },
+            "propertyOrder": 2
+          },
+          "PORT": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 851,
+            "options": [
+              {
+                "label": "Port_851 (851)",
+                "value": 851
+              }
+            ],
+            "propertyOrder": 3
+          },
+          "STREAM_SERVER_PORT": {
+            "type": "integer",
+            "configDescription": "DESC_RUNTIME_STREAMPORT",
+            "default": -1,
+            "maximum": 65535,
+            "options": [
+              {
+                "label": "-1 (Auto)",
+                "value": -1
+              }
+            ],
+            "propertyOrder": 4
+          },
+          "USE_WHITELISTING": {
+            "type": "boolean",
+            "default": false,
+            "propertyOrder": 5
+          }
+        },
+        "additionalProperties": false,
+        "required": [ "ENABLED", "AMS_NET_ID", "PORT", "STREAM_SERVER_PORT", "USE_WHITELISTING" ]
+      },
+      "default": {
+        "PLC1": {
+          "ENABLED": true,
+          "AMS_NET_ID": "127.0.0.1.1.1",
+          "PORT": 851,
+          "STREAM_SERVER_PORT": -1,
+          "USE_WHITELISTING": false
+        }
+      },
+      "defaultConfigurable": true
+    },
+    "AVERAGING_INTERVAL": {
+      "type": "integer",
+      "configDescription": "DESC_AVERAGING_INTERVAL",
+      "default": 0,
+      "propertyOrder": 2
+    }
+  },
+  "required": [ "RUNTIMES" ],
+  "type": "object",
+  "additionalProperties": false
+}

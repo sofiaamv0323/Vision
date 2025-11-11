@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "definitions": {
+    "TcHmi.Controls.Beckhoff.Vision.TcHmiVnShape": {
+      "type": "object",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkControlType": "TcHmiVnShape",
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff.Vision"
+    },
+    "TcHmi.Controls.Beckhoff.Vision.TcHmiVnShape.Boundary": {
+      "title": "TcHmiVnShape.Boundary",
+      "$schema": "http://json-schema.org/draft-04/schema",
+      "type": "object",
+      "properties": {
+        "isActive": {
+          "type": "boolean"
+        },
+        "x": {
+          "type": "integer"
+        },
+        "y": {
+          "type": "integer"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      },
+      "propertiesMeta": [
+        {
+          "name": "x",
+          "displayName": "X",
+          "category": "General",
+          "displayPriority": 1,
+          "description": "X-offset of the boundary rectangle.",
+          "defaultValue": null,
+          "defaultValueInternal": 0
+        },
+        {
+          "name": "y",
+          "displayName": "Y",
+          "category": "General",
+          "displayPriority": 2,
+          "description": "Y-offset of the boundary rectangle.",
+          "defaultValue": null,
+          "defaultValueInternal": 0
+        },
+        {
+          "name": "width",
+          "displayName": "Width",
+          "category": "General",
+          "displayPriority": 3,
+          "description": "Width of the boundary rectangle.",
+          "defaultValue": null,
+          "defaultValueInternal": 0
+        },
+        {
+          "name": "height",
+          "displayName": "Height",
+          "category": "General",
+          "displayPriority": 4,
+          "description": "Height of the boundary rectangle.",
+          "defaultValue": null,
+          "defaultValueInternal": 0
+        },
+        {
+          "name": "isActive",
+          "displayName": "IsActive",
+          "category": "General",
+          "displayPriority": 5,
+          "description": "Activates or deactivates the boundary rectangle.",
+          "defaultValue": null,
+          "defaultValueInternal": false
+        }
+      ],
+      "id": "tchmi:framework#/definitions/TcHmi.Controls.Beckhoff.Vision.TcHmiVnShape.Boundary"
+    }
+  }
+}

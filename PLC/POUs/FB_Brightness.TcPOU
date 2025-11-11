@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_Brightness" Id="{4db2d8e9-0a27-4033-905f-235857a7e891}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Brightness
+VAR_INPUT
+	bWriteBrightness:						BOOL;
+	fBrightnessWritten:						UDINT;
+END_VAR
+VAR_OUTPUT
+	bBusyWriteBrightness:					BOOL;
+	bErrorWriteBrightness:					BOOL;
+END_VAR
+VAR
+	//Cambio de brillo[0..4095]
+	Addr_Brightness:						GVCP_REGISTER_ADDRESS:= 16#33000120;
+	fbBrightnessRegisterWrite:				FB_VN_WriteRegister_UDINT;
+	fbBrightnessRegisterRead:				FB_VN_ReadRegister_UDINT;
+	bReadBrightness:						BOOL;
+	fBrightnessRead:						UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Brigthness
+fbBrightnessRegisterWrite(nAddress:=Addr_Brightness, nValue:= fBrightnessWritten, bWrite:= bWriteBrightness, bBusy=> bBusyWriteBrightness, bError=> bErrorWriteBrightness);
+fbBrightnessRegisterRead(nAddress:=Addr_Brightness, bRead:=bReadBrightness, nValue=> fBrightnessRead);
+IF fBrightnessWritten > 4095 THEN
+	fBrightnessWritten:=4095;
+ELSIF fBrightnessWritten <=0 THEN
+	fBrightnessWritten:=0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
